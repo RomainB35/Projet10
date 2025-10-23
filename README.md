@@ -1,6 +1,6 @@
 #  MVP de recommandation d’articles
 
-Ce dépôt contient le code et les outils pour le **premier MVP** d'une application de recommandation d'articles
+Ce dépôt contient le code et les outils pour le **premier MVP** d'une application de recommandation d'articles.
 
 ---
 
@@ -9,9 +9,9 @@ Ce dépôt contient le code et les outils pour le **premier MVP** d'une applicat
 Dans cette première version de l’application :
 
 - L’utilisateur reçoit une **sélection de cinq articles** recommandés.
-- Nous n’avons pas encore de données réelles utilisateurs ; nous utilisons donc des **données publiques** pour développer et tester le système de recommandation.
+- Nous n’avons pas encore de données réelles utilisateurs ; nous utilisons donc des **données publiques https://www.kaggle.com/datasets/gspmoreira/news-portal-user-interactions-by-globocom#clicks_sample.csv¶** pour développer et tester le système de recommandation.
 - Le MVP se concentre sur la **fonctionnalité critique** : proposer des recommandations personnalisées rapidement.
-- L’architecture est pensée pour intégrer facilement **de nouveaux utilisateurs et de nouveaux articles** à l’avenir.
+- L’architecture doit être pensée pour intégrer facilement **de nouveaux utilisateurs et de nouveaux articles** à l’avenir.
 
 ---
 
@@ -56,19 +56,23 @@ Projet10/
 - **Interface utilisateur**
   - Affichage des **5 articles recommandés** pour l’utilisateur sélectionné.
 - **Stockage et gestion des données**
-  - Upload automatique sur un bucket S3 via script.
+  - Upload automatisé sur un bucket S3 via un script aws cli.
+- **Déploiement des fonctions**
+  - Déploiement automatisé via un script scw cli.
 
 ---
 
 ## 📈 Architecture cible
 
 - Système **modulaire et serverless** pour faciliter la scalabilité.
-- Prise en compte de **nouveaux utilisateurs** et **nouveaux articles** : le système recalculera les recommandations sans modifier l’architecture globale.
+- Prise en compte de **nouveaux utilisateurs** et **nouveaux articles** :
+ - Nécessité d'ajouter une fonction pour mettre à jour les données sur le bucket S3
+    - Pour le mode online: le système recalculera les recommandations sans modifier l’architecture globale.
+    - Pour le mode offline: il faut ajouter une fonction qui met à jour le fichier qui contient les 5 articles les plus proches pour tous les articles.
 
 ---
 
 ## 💡 Remarques
 
 - Les fichiers volumineux sont stockés sur **S3 Scaleway**, et non directement dans Git.
-- Le projet est conçu comme un **MVP**, avec des **extensions futures possibles** pour la production.
 
