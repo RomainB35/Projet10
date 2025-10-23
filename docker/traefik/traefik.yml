@@ -1,0 +1,23 @@
+api:
+  dashboard: true
+
+entryPoints:
+  web:
+    address: ":80"
+  websecure:
+    address: ":443"
+
+providers:
+  docker:
+    exposedByDefault: false
+  file:
+    filename: /etc/traefik/dynamic_conf.yml
+
+certificatesResolvers:
+  letsencrypt:
+    acme:
+      email: yourmail@address
+      storage: /letsencrypt/acme.json
+      httpChallenge:
+        entryPoint: web
+
