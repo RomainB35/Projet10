@@ -9,8 +9,8 @@ Ce dépôt contient le code et les outils pour le **premier MVP** d'une applicat
 Dans cette première version de l’application :
 
 - L’utilisateur reçoit une **sélection de cinq articles** recommandés.
-- Nous n’avons pas encore de données réelles utilisateurs ; nous utilisons donc des **données publiques https://www.kaggle.com/datasets/gspmoreira/news-portal-user-interactions-by-globocom#clicks_sample.csv¶** pour développer et tester le système de recommandation.
-- Le MVP se concentre sur la **fonctionnalité critique** : proposer des recommandations personnalisées rapidement.
+- Je n'ai pas encore de données réelles utilisateurs ; j'utilise donc les données publiques **https://www.kaggle.com/datasets/gspmoreira/news-portal-user-interactions-by-globocom#clicks_sample.csv¶** pour développer et tester le système de recommandation.
+- Le MVP se concentre sur la **fonctionnalité critique** : proposer une recommandation de 5 articles pour un utilisateur donné rapidement.
 - L’architecture doit être pensée pour intégrer facilement **de nouveaux utilisateurs et de nouveaux articles** à l’avenir.
 
 ---
@@ -66,7 +66,7 @@ Projet10/
 
 - Système **modulaire et serverless** pour faciliter la scalabilité.
 - Prise en compte de **nouveaux utilisateurs** et **nouveaux articles** :
- - Nécessité d'ajouter une fonction pour mettre à jour les données sur le bucket S3
+  - Nécessité d'ajouter une fonction pour mettre à jour les données sur le bucket S3
     - Pour le mode online: le système recalculera les recommandations sans modifier l’architecture globale.
     - Pour le mode offline: il faut ajouter une fonction qui met à jour le fichier qui contient les 5 articles les plus proches pour tous les articles.
 
