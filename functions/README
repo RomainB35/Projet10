@@ -1,0 +1,5 @@
+1. Installer scw cli pour pouvoir automatiser le déploiement, voir documentation officielle https://www.scaleway.com/en/docs/scaleway-cli/quickstart/
+2. Documentation officielle sur le déploiement des fonctions via scw cli https://www.scaleway.com/en/docs/serverless-functions/api-cli/deploy-function-cli/
+3. Ajuster les variables FUNCTION_NAME , NAMESPACE_ID et YOUR_RUNTIME dans le script deploy_functions.bash en fonction de votre compte Scaleway
+4. Les fonctions sont au format zip dans le répertoire zips/
+5. Exécuter le script deploy_functions.bash
