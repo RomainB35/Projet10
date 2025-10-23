@@ -62,6 +62,15 @@ Projet10/
 
 ---
 
+## 📈 Architecture actuelle
+
+![Schéma de l'architecture actuelle](architecture/Projet10-Serverless_Architecture_v1.drawio.png)
+
+
+---
+
+---
+
 ## 📈 Architecture cible
 
 - Système **modulaire et serverless** pour faciliter la scalabilité.
