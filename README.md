@@ -17,6 +17,8 @@ Dans cette première version de l’application :
 
 ## 📂 Structure complète du dépôt
 
+
+```
 Projet10/
 ├── notebooks/
 │   └── Projet10-Data-Analysis.ipynb
@@ -41,6 +43,8 @@ Projet10/
         ├── letsencrypt/
         │   └── acme.json
         └── traefik.yml
+
+```
 
 ---
 
