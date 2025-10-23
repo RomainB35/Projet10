@@ -62,7 +62,7 @@ Projet10/
 
 ---
 
-## 📈 Architecture actuelle
+## 🏛️ Architecture actuelle
 
 ![Schéma de l'architecture actuelle](architecture/Projet10-Serverless_Architecture_v1.drawio.png)
 
@@ -73,7 +73,6 @@ Projet10/
 
 ## 📈 Architecture cible
 
-- Système **modulaire et serverless** pour faciliter la scalabilité.
 - Prise en compte de **nouveaux utilisateurs** et **nouveaux articles** :
   - Nécessité d'ajouter une fonction pour mettre à jour les données sur le bucket S3
     - Pour le mode online: le système recalculera les recommandations sans modifier l’architecture globale.
