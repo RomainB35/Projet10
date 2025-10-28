@@ -64,7 +64,35 @@ Projet10/
 
 ## 🏛️ Architecture actuelle
 
-![Schéma de l'architecture actuelle](architecture/Projet10-Serverless_Architecture_v1.drawio.png)
+![Schéma de l'architecture actuelle](architecture/Architecture_actuelle.drawio.png)
+
+1. Les données applicatives sur les articles et les utilisateurs sont traitées (voir notebook) puis déposées (voir répertoire S3_Storage) sur un bucket S3 Scaleway.
+
+2. Deux Serverless functions sont déployées sur Scaleway
+  - Une fonction compute "live" qui:
+    -  prend en entrée un user_id
+    -  charge les données brutes des articles et des utilisateurs 
+    -  trouve les articles consultés par l'utilisateur
+    -  trouve l'article le plus récent et le plus ancien consulté par l'utilisateur
+    -  calcule l'embedding de l'article moyen (vecteur moyen)
+    -  trouve les 5 articles les plus proches (en utilisant les distances cosine et euclidienne) de 
+        - l'article le plus récent consulté par l'utilisateur
+        - l'article le plus ancien consulté par l'utilisateur
+        - l'article moyen
+  - Une fonction compute "offline" qui:
+    - prend en entrée un user_id
+    - charge les données brutes des articles , des utilisateurs **ET un fichier csv qui contient pour chaque articles les 5 articles les plus proches (distance euclidienne calculée à partir des embedding en 1.)**
+    -  trouve les articles consultés par l'utilisateur
+    -  trouve l'article le plus récent et le plus ancien consulté par l'utilisateur
+    -  calcule l'embedding de l'article moyen (vecteur moyen)
+    -  utilise le csv cité précédement pour obtenir les 5 articles les plus proches de l'article plus récent et du plus ancien consulté par l'utilisateur
+    -  calcule les 5 articles les plus proches de l'article moyen
+
+ 3. Sur un VPS Hostinger, je déploie une application Streamlit de démonstration qui prend en entrée un user_id, propose un mode de calcul live et un mode de calcul offline en faisant appel séparément aux deux fonctions suscités et propose une recommandation de 5 articles:
+
+        - les 2 articles les plus proches de l'article le plus récent consulté par l'utilisateur
+        - les 2 articles les plus proches de l'article moyen
+        - l'article le plus proche de l'article le plus ancien consulté par l'utilisateur
 
 
 ---
